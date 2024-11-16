@@ -2,7 +2,6 @@ from maxcomden import mcd
 from inverso_modular import inverso_modular
 from generar_primo import generar_primo
 
-# Devuelve llave publica y privada en tuplas 
 def generar_llaves(rango_inferior, rango_superior):
     p = generar_primo(rango_inferior, rango_superior)
     q = generar_primo(rango_inferior, rango_superior)
