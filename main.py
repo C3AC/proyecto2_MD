@@ -1,12 +1,16 @@
 from generar_llaves import generar_llaves
 from RSA import encriptar, desencriptar
+from positivoyentero import numscan
 
 def main():
    
-    rango_inferior = int(input("Ingrese el rango inferior: "))
-    rango_superior = int(input("Ingrese el rango superior: ")) 
-
-    pubkey, privkey = generar_llaves(rango_inferior, rango_superior)
+    rango_inferior = numscan()
+    rango_superior = numscan()
+    try: 
+        pubkey, privkey = generar_llaves(rango_inferior, rango_superior)
+    except RecursionError:
+        print("Error: El intervalo de generación de primos no permite asegurar unicidad para los valores encriptados, se usara el intervalo por defecto [2, 1000]")
+        pubkey, privkey = generar_llaves(2, 1000) 
 
 
     mensaje = input("Ingrese el mensaje a encriptar: ")
